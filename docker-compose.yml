@@ -11,4 +11,4 @@ services:
       - POSTGRES=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+       - ../.dbdata/postgres:/var/lib/postgresql/data

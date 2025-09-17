@@ -1,9 +1,14 @@
 import Link from "next/link"
-import { CiBookmarkCheck, CiLogout } from "react-icons/ci"
+import { CiLogout } from "react-icons/ci"
 import { GiElephantHead } from "react-icons/gi"
 import { SidebarItem } from "./SidebarItem"
-import { MdCategory } from "react-icons/md";
-import { IoCalendarClearOutline, IoCheckboxOutline, IoListOutline } from 'react-icons/io5'
+import {
+  IoBasketOutline,
+  IoCalendarClearOutline,
+  IoCheckboxOutline,
+  IoCodeWorkingOutline,
+  IoListOutline
+} from 'react-icons/io5'
 
 
 const sidebarItems = [
@@ -18,10 +23,20 @@ const sidebarItems = [
     icon: <IoCheckboxOutline size={30} />
   },
   {
-    path: '/categories',
+    path: '/dashboard/server-todos',
     title: 'Server Actions',
     icon: <IoListOutline size={30} />
-  }
+  },
+  {
+    path: '/dashboard/cookies',
+    title: 'Cookies',
+    icon: <IoCodeWorkingOutline size={30} />
+  },
+  {
+    path: '/dashboard/products',
+    title: 'Products',
+    icon: <IoBasketOutline size={30} />
+  },
 ]
 
 

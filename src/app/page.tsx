@@ -1,9 +1,6 @@
-import Image from "next/image";
+import { redirect } from 'next/navigation';
+
 
 export default function Home() {
-  return (
-    <>
-      <h1 className="text-5xl text-center p-3">Hola mundo</h1>
-    </>
-  );
+  redirect('/dashboard');
 }

@@ -8,6 +8,7 @@ export const metadata = {
 };
 
 
+
 export default async function RestTodosPage() {
 
 
@@ -19,6 +20,7 @@ export default async function RestTodosPage() {
     return (
         <div>
             {/* TODO: Formulario para agregar todos */}
+
             <NewTodo />
 
             <TodosGrid todos={todos} />

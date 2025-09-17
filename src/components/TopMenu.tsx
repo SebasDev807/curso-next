@@ -1,6 +1,29 @@
-import { CiChat1, CiSearch, CiMenuBurger, CiBellOn } from "react-icons/ci"
+import { cookies } from "next/headers"
+import Link from "next/link";
+import {
+    CiChat1,
+    CiSearch,
+    CiMenuBurger,
+    CiShoppingBasket
+} from "react-icons/ci"
 
-export const TopMenu = () => {
+export const TopMenu = async () => {
+
+
+    const cookieStore = await cookies();
+    const cart = JSON.parse(cookieStore.get('cart')?.value ?? '{}')
+
+    const getTotalCount = (cart: { [id: string]: number }) => {
+        let items = 0;
+        Object.values(cart).forEach(value => {
+            items += value as number;
+        })
+        return items;
+    }
+
+    const totalItems = getTotalCount(cart);
+
+
     return (
         <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
             <div className="px-6 flex items-center justify-between space-x-4">
@@ -30,11 +53,22 @@ export const TopMenu = () => {
                         <CiSearch />
                     </button>
                     <button className="flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
-                        <CiChat1 size={25} className="text-slate-800"/>
+                        <CiChat1 size={25} className="text-slate-800" />
                     </button>
-                    <button className="flex items-center justify-center w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
-                        <CiBellOn size={25}  className="text-slate-800"/>
-                    </button>
+
+                    <Link
+                    href="/dashboard/cart"
+                    className="relative flex items-center justify-center h-10 w-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 cursor-pointer">
+                        <CiShoppingBasket size={25} className="text-slate-800" />
+
+                        {totalItems > 0 &&
+                            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                {totalItems}
+                            </span>}
+
+                    </Link>
+
+
                 </div>
             </div>
         </div>
